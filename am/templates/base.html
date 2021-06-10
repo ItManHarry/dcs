@@ -33,7 +33,7 @@
         {% block header %}
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class = "container-fluid">
-                    <a class="navbar-brand" href="{{url_for('main.index')}}"><i class="fas fa-hashtag"></i></a>
+                    <a class="navbar-brand" href="{{url_for('main.index')}}"><i class="fas fa-cogs"></i></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
                     </button>
@@ -44,6 +44,7 @@
                         </li>
                       </ul>
                     </div>
+                    {#
                     <!--div class="row text-right">
                         <div class="col-12">
                             {% if current_user.is_authenticated %}
@@ -55,6 +56,7 @@
                             {% endif %}
                         </div>
                     </div-->
+                    #}
                 </div>
             </nav>
         {% endblock %}
@@ -69,9 +71,9 @@
         {# --------- 引入子页面JavaScritp变量 --------- #}
         {% block variable %}{% endblock %}
         {% block ready %}
-        $(function(){
+            $(function(){
 
-        })
+            })
         {% endblock %}
         {# --------- 引入子页面自己的JavaScript函数 --------- #}
         {% block function %}

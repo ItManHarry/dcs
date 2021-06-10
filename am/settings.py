@@ -2,10 +2,11 @@
     系统配置
 '''
 import os
+from urllib.parse import unquote
 #开发数据库
-dev_db = os.getenv('DEVELOP_DB')
+dev_db = 'oracle+cx_oracle://%(user)s:%(password)s@%(ip)s:%(port)s/%(sid)s' %{'user': os.getenv('DEVELOP_DB_USER'), 'password': unquote(os.getenv('DEVELOP_DB_PWD')), 'ip': os.getenv('DEVELOP_DB_IP'), 'port': os.getenv('DEVELOP_DB_PORT'),'sid': os.getenv('DEVELOP_DB_SID')}
 #生产数据库
-pro_db = os.getenv('PRODUCT_DB')
+pro_db = 'oracle+cx_oracle://%(user)s:%(password)s@%(ip)s:%(port)s/%(sid)s' %{'user': os.getenv('PRODUCT_DB_USER'), 'password': unquote(os.getenv('PRODUCT_DB_PWD')), 'ip': os.getenv('PRODUCT_DB_IP'), 'port': os.getenv('PRODUCT_DB_PORT'),'sid': os.getenv('PRODUCT_DB_SID')}
 #基础路径
 basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 #全局配置
