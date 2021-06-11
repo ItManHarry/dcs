@@ -27,4 +27,7 @@ def index():
     for data in query_data:
         cnt += 1
         print('Index : ', cnt, ', data : ', data)
+    from am.dao.public import get_machine_classes
+    names = get_machine_classes('10500,10201')
+    print('names : ' , names)
     return render_template('main/index.html')

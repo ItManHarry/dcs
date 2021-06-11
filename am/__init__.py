@@ -66,7 +66,9 @@ def register_web_errors(app):
 #注册系统各个功能模块
 def register_web_views(app):
     from am.views.main import bp_main
+    from am.views.agent import bp_agent
     app.register_blueprint(bp_main, url_prefix='/main')
+    app.register_blueprint(bp_agent, url_prefix='/agent')
 #注册shell环境
 def register_web_shell(app):
     @app.shell_context_processor

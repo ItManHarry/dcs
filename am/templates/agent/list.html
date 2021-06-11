@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/pagination.html' import render_pagination with context %}
+{% block title %}DCS部品系统-代理商信息{% endblock %}
+{% block main %}
+<div class = "container-fluid">
+    <div class="row">
+        <div class = "col text-center">
+            <h1>DCS AM Part Agent List</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class = "col">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="text-center">
+                        <th>DCS代码</th>
+                        <th>SAP代码</th>
+                        <th>代理商名称</th>
+                        <th>状态</th>
+                        <th>产品类别</th>
+                        <!--th colspan="3">大区</th-->
+                        <th>当月结转</th>
+                        <th>次月结转</th>
+                    </tr>
+                    <!--tr class="text-center">
+                        <th>挖掘机</th>
+                        <th>装载机</th>
+                        <th>山猫</th>
+                    </tr-->
+                </thead>
+                <tbody>
+                    {% for data in table_data %}
+                        <tr class="text-center">
+                            <td>{{ data.dcscd }}</td>
+                            <td>{{ data.sapcd }}</td>
+                            <td>{{ data.agent }}</td>
+                            <td>{{ data.status }}</td>
+                            <td>{{ data.machine }}</td>
+                            <!--td>{{ data.excavator }}</td>
+                            <td>{{ data.loader }}</td>
+                            <td>{{ data.bobcat }}</td-->
+                            <td>{{ data.current }}</td>
+                            <td>{{ data.next }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{%endblock%}
