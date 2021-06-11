@@ -1,6 +1,6 @@
 from flask import Blueprint,render_template,request
 from am.extensions import db
-from am.dao.public import get_machine_classes
+from am.dao.public import get_machine_classes, get_agent_map
 bp_agent = Blueprint('agent', __name__)
 '''
     获取代理商清单
@@ -38,10 +38,7 @@ def list():
     sql += ' order by a.name'
     query_result = db.session.execute(sql)
     table_data = []
-    cnt = 0
     for result in query_result:
-        cnt += 1
-        print('Index : ', cnt, ', data : ', result)
         data = {}
         data['dcscd'] = result[0]
         data['sapcd'] = result[1]
@@ -54,5 +51,10 @@ def list():
         data['current'] = result[8]
         data['next'] = result[9]
         table_data.append(data)
-    print('table data is : ', table_data)
+    '''
+    agent_map = get_agent_map(1, 'all')
+    print('Map length is :', len(agent_map))
+    for key, value in agent_map.items():
+        print('Agent map(ID) key is  %s, value is %s' %(key, value))
+    '''
     return render_template('agent/list.html', table_data=table_data)
