@@ -29,6 +29,8 @@ def list():
         left join cp_branchcommue d
         on a.branchcommueid_b = d.id
         where 1 = 1
+        and curmonth <> '0'
+        and nextmonth <> '0'
         and a.id <> -1         
     '''
     if code.strip() != '':
